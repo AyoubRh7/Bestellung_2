@@ -1,0 +1,95 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F5F5;
+    color: #344E41;
+}
+
+.navbar {
+    background-color: #344E41;
+    padding: 15px 30px;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: #344E41 !important;
+    border-color: #344E41 !important;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2C3B32 !important;
+}
+
+.btn-danger {
+    background-color: #D9534F !important;
+    border-color: #D9534F !important;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #C9302C !important;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #344E41;
+    transition: box-shadow 0.3s ease;
+    height: 100%; /* Ensures card height fills the space */
+}
+
+.card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 25px; /* Increased padding for a spacious look */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px; /* Increased space for title */
+}
+
+/* Button styling to make buttons uniform */
+.btn {
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+/* Grid Layout for cards */
+.row-cols-md-2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .card-body {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .card-title {
+        font-size: 1.2rem; /* Adjust title font size for smaller screens */
+    }
+}

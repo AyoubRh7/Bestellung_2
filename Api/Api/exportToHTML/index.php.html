@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>index.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #9876aa;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+index.php</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?php</span>
+<span class="s2">header(</span><span class="s3">&quot;Access-Control-Allow-Origin: *&quot;</span><span class="s2">);</span>
+<span class="s2">header(</span><span class="s3">&quot;Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS&quot;</span><span class="s2">);</span>
+<span class="s2">header(</span><span class="s3">&quot;Access-Control-Allow-Headers: Content-Type, Authorization&quot;</span><span class="s2">);</span>
+
+<span class="s4">$uri </span><span class="s2">= parse_url(</span><span class="s4">$_SERVER</span><span class="s2">[</span><span class="s3">'REQUEST_URI'</span><span class="s2">], PHP_URL_PATH);</span>
+<span class="s0">if</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/register&quot;</span><span class="s2">){</span><span class="s0">include </span><span class="s3">&quot;routes/register.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/users&quot;</span><span class="s2">) {</span>
+    <span class="s0">include </span><span class="s3">&quot;routes/users.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/restaurants&quot;</span><span class="s2">) {</span><span class="s0">include </span><span class="s3">&quot;routes/restaurants.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/orders&quot;</span><span class="s2">) {</span><span class="s0">include </span><span class="s3">&quot;routes/orders.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/restaurant/order_items&quot;</span><span class="s2">) {</span><span class="s0">include </span><span class="s3">&quot;routes/order_items.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/restaurant/orders&quot;</span><span class="s2">) {</span><span class="s0">include </span><span class="s3">&quot;routes/orders.php&quot;</span><span class="s2">;}</span>
+<span class="s0">elseif</span><span class="s2">(</span><span class="s4">$uri </span><span class="s2">== </span><span class="s3">&quot;/api/deadline&quot;</span><span class="s2">) {</span><span class="s0">include </span><span class="s3">&quot;routes/deadline.php&quot;</span><span class="s2">;}</span>
+<span class="s0">else </span><span class="s2">{</span><span class="s0">echo </span><span class="s2">json_encode([</span><span class="s3">&quot;message&quot; </span><span class="s2">=&gt; </span><span class="s3">&quot;Invalid API Route&quot;</span><span class="s2">]);}</span>
+<span class="s0">?&gt;</span></pre>
+</body>
+</html>

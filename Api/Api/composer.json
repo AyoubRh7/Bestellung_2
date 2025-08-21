@@ -1,0 +1,26 @@
+{
+    "name": "admrhouttay/api",
+    "description": "Test",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Admrhouttay\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aybrh7"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "vendor-dir": "./vendor"
+    },
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    },
+    "require-dev": {
+        "phpoffice/phpspreadsheet": "^4.0"
+    }
+}
