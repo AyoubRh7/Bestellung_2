@@ -7,62 +7,283 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <!-- Enhanced Dashboard Styles -->
+    <style>
+        /* Dashboard-specific animations and enhancements */
+        .dashboard-container {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        /* Enhanced navbar with gradient and shadow */
+        .navbar {
+            background: linear-gradient(135deg, #343a40 0%, #495057 100%) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-bottom: 3px solid #007bff;
+        }
+
+        /* Card hover animations and modern styling */
+        .dashboard-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Hover effect for cards */
+        .dashboard-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* Card body with enhanced spacing */
+        .dashboard-card .card-body {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Card title with gradient text effect */
+        .dashboard-card .card-title {
+            background: linear-gradient(135deg, #495057, #6c757d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        /* Decorative element behind card title */
+        .dashboard-card .card-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #007bff, #28a745);
+            border-radius: 2px;
+        }
+
+        /* Enhanced button styling with animations */
+        .dashboard-btn {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 24px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        /* Button hover effects */
+        .dashboard-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Button ripple effect */
+        .dashboard-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .dashboard-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Card description styling */
+        .card-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        /* Animated background pattern */
+        .dashboard-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .dashboard-card:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Responsive grid adjustments */
+        @media (max-width: 768px) {
+            .dashboard-card .card-body {
+                padding: 1.5rem;
+            }
+            
+            .dashboard-card .card-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Loading animation for cards */
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dashboard-card {
+            animation: cardFadeIn 0.6s ease forwards;
+        }
+
+        /* Stagger animation for multiple cards */
+        .dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+        .dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+        .dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+        .dashboard-card:nth-child(4) { animation-delay: 0.4s; }
+        .dashboard-card:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Enhanced logout button */
+        #logout {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #logout:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<!-- Enhanced Navigation Bar with gradient and shadow -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <a class="navbar-brand" href="#" style="font-weight: 700; font-size: 1.5rem;">
+            <i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard
+        </a>
         <button class="btn btn-danger" id="logout">Logout</button>
     </div>
 </nav>
 
-<div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-        <!-- Restaurants Card -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card shadow-lg border-0 rounded-3 h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-dark">Restaurants</h5>
-                    <a href="manage_restaurants.html" class="btn btn-primary w-100">Manage Restaurants</a>
-                </div>
+<!-- Main dashboard container with gradient background -->
+<div class="dashboard-container">
+    <div class="container mt-5">
+        <!-- Dashboard header with welcome message -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold text-dark mb-3">Welcome to Admin Panel</h1>
+                <p class="lead text-muted">Manage your food ordering system efficiently</p>
             </div>
         </div>
 
-        <!-- Menus Card -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card shadow-lg border-0 rounded-3 h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-dark">Menus</h5>
-                    <a href="manage_menus.html" class="btn btn-primary w-100">Manage Menus</a>
+        <!-- Enhanced card grid with animations -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Restaurants Card with enhanced styling -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Restaurants</h5>
+                        <p class="card-description">Add, edit, and manage restaurant information</p>
+                        <a href="manage_restaurants.html" class="btn btn-primary dashboard-btn w-100">
+                            <i class="fas fa-store me-2"></i>Manage Restaurants
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Orders Card -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card shadow-lg border-0 rounded-3 h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-dark">Orders</h5>
-                    <a href="manage_orders.html" class="btn btn-primary w-100">Manage Orders</a>
+            <!-- Menus Card with enhanced styling -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Menus</h5>
+                        <p class="card-description">Create and manage menu items and pricing</p>
+                        <a href="manage_menus.html" class="btn btn-primary dashboard-btn w-100">
+                            <i class="fas fa-utensils me-2"></i>Manage Menus
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Deadline Card -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card shadow-lg border-0 rounded-3 h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-dark">Set Deadline</h5>
-                    <a href="deadline.html" class="btn btn-warning w-100">Set Deadline</a>
+            <!-- Orders Card with enhanced styling -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Orders</h5>
+                        <p class="card-description">View and manage customer orders by date</p>
+                        <a href="manage_orders.html" class="btn btn-primary dashboard-btn w-100">
+                            <i class="fas fa-shopping-cart me-2"></i>Manage Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary Card with enhanced styling -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Order Summary</h5>
+                        <p class="card-description">View orders with prices and financial totals</p>
+                        <a href="admin_summary.html" class="btn btn-success dashboard-btn w-100">
+                            <i class="fas fa-chart-bar me-2"></i>View Summary
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadline Card with enhanced styling -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Set Deadline</h5>
+                        <p class="card-description">Configure order deadlines for employees</p>
+                        <a href="deadline.html" class="btn btn-warning dashboard-btn w-100">
+                            <i class="fas fa-clock me-2"></i>Set Deadline
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="../js/auth.js"></script>
 </body>
 

@@ -1,95 +1,382 @@
-/* Base styles */
+/* ========================================
+   ENHANCED FOOD ORDERING SYSTEM STYLES
+   ======================================== */
+
+/* Import Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* ========================================
+   BASE STYLES AND TYPOGRAPHY
+   ======================================== */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #F5F5F5;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     color: #344E41;
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
+/* ========================================
+   ENHANCED NAVBAR STYLING
+   ======================================== */
 .navbar {
-    background-color: #344E41;
+    background: linear-gradient(135deg, #344E41 0%, #2C3B32 100%) !important;
     padding: 15px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-bottom: 3px solid #007bff;
+    position: relative;
+    z-index: 1000;
 }
 
-.navbar a {
+/* Navbar brand with enhanced styling */
+.navbar-brand {
     color: white !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
 }
 
+.navbar-brand:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ========================================
+   ENHANCED BUTTON STYLING
+   ======================================== */
+.btn {
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    font-size: 0.9rem;
+}
+
+/* Primary button with gradient and hover effects */
 .btn-primary {
-    background-color: #344E41 !important;
-    border-color: #344E41 !important;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(135deg, #344E41 0%, #2C3B32 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(52, 78, 65, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #2C3B32 !important;
+    background: linear-gradient(135deg, #2C3B32 0%, #1a2520 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 78, 65, 0.4);
 }
 
+/* Danger button with enhanced styling */
 .btn-danger {
-    background-color: #D9534F !important;
-    border-color: #D9534F !important;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(135deg, #D9534F 0%, #C9302C 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
 }
 
 .btn-danger:hover {
-    background-color: #C9302C !important;
+    background: linear-gradient(135deg, #C9302C 0%, #a71e2a 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(217, 83, 79, 0.4);
 }
 
+/* Success button styling */
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+/* Warning button styling */
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%) !important;
+    border: none !important;
+    color: #212529 !important;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #fd7e14 0%, #e83e8c 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    color: #212529 !important;
+}
+
+/* Button ripple effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ========================================
+   ENHANCED CARD STYLING
+   ======================================== */
 .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: #344E41;
-    transition: box-shadow 0.3s ease;
-    height: 100%; /* Ensures card height fills the space */
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
 }
 
+/* Card hover effects */
 .card:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
+/* Animated background pattern for cards */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.card:hover::after {
+    transform: translateX(100%);
+}
+
+/* Card body with enhanced spacing */
 .card-body {
-    padding: 25px; /* Increased padding for a spacious look */
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
+/* Card title with gradient text effect */
 .card-title {
+    background: linear-gradient(135deg, #344E41, #495057);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Decorative element behind card titles */
+.card-title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #28a745);
+    border-radius: 2px;
+}
+
+/* ========================================
+   ENHANCED FORM STYLING
+   ======================================== */
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.form-label {
     font-weight: 600;
-    margin-bottom: 20px; /* Increased space for title */
+    color: #495057;
+    margin-bottom: 0.5rem;
 }
 
-/* Button styling to make buttons uniform */
-.btn {
-    border-radius: 5px;
-    padding: 12px;
-    font-size: 1.1rem;
+/* ========================================
+   ENHANCED TABLE STYLING
+   ======================================== */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Grid Layout for cards */
-.row-cols-md-2 {
-    display: flex;
-    flex-wrap: wrap;
+.table thead {
+    background: linear-gradient(135deg, #344E41 0%, #2C3B32 100%);
+    color: white;
 }
 
-.col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.table thead th {
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.w-100 {
-    width: 100%;
+.table tbody tr {
+    transition: all 0.3s ease;
 }
 
+.table tbody tr:hover {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    transform: scale(1.01);
+}
+
+.table td {
+    padding: 1rem;
+    border-color: #e9ecef;
+}
+
+/* ========================================
+   ENHANCED CONTAINER STYLING
+   ======================================== */
+.container {
+    padding: 2rem 0;
+}
+
+/* Page headers with enhanced styling */
+.display-4 {
+    background: linear-gradient(135deg, #344E41, #495057);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.lead {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* ========================================
+   ANIMATIONS AND TRANSITIONS
+   ======================================== */
+/* Fade in animation for page elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger animation for multiple elements */
+.stagger-animation > * {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
 @media (max-width: 767px) {
     .navbar {
-        padding: 10px;
+        padding: 10px 15px;
     }
 
     .card-body {
-        padding: 15px; /* Adjust padding for smaller screens */
+        padding: 1.5rem;
     }
 
     .card-title {
-        font-size: 1.2rem; /* Adjust title font size for smaller screens */
+        font-size: 1.2rem;
     }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .container {
+        padding: 1rem 0;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-gradient {
+    background: linear-gradient(135deg, #344E41, #495057);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-enhanced {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
