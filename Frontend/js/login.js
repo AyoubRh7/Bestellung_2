@@ -5,7 +5,6 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     console.log("=== LOGIN DEBUG ===");
     console.log("Attempting login with username:", email);
-    console.log("Form data being sent:", { username: email, password: "***" });
 
     fetch("http://localhost:8000/api/users", {
         method: "POST",
@@ -16,63 +15,90 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     })
     .then(response => {
         console.log("Response status:", response.status);
-        console.log("Response ok:", response.ok);
         return response.json();
     })
     .then(data => {
         console.log("=== FULL LOGIN RESPONSE ===");
-        console.log("Complete response object:", data);
-        console.log("Response keys:", Object.keys(data));
-        console.log("Status value:", data.status);
-        console.log("Status type:", typeof data.status);
-        console.log("Success value:", data.success);
-        console.log("Success type:", typeof data.success);
-        console.log("Token exists:", !!data.token);
-        console.log("Role:", data.role);
+        console.log("Complete response:", data);
         console.log("================================");
         
-        // Check for both possible success indicators
+        // Check for success - handle both possible response formats
         const isSuccess = data.status === "success" || data.success === true || data.success === "true";
         
         if(isSuccess && data.token) {
-            console.log("Login successful!");
-            console.log("Token:", data.token ? "Present" : "Missing");
-            console.log("Role:", data.role);
+            console.log("Login successful! Setting localStorage...");
             
-            // Store token and role
+            // Store the data
             localStorage.setItem("token", data.token);
             localStorage.setItem("role", data.role);
             
-            // Store additional user info if available
-            if(data.user_id) {
-                localStorage.setItem("user_id", data.user_id);
-            }
-            if(data.username) {
-                localStorage.setItem("username", data.username);
-            }
+            // Store additional data if available
+            if(data.user_id) localStorage.setItem("user_id", data.user_id);
+            if(data.username) localStorage.setItem("username", data.username);
             
-            console.log("=== LOCALSTORAGE VERIFICATION ===");
-            console.log("Stored token:", localStorage.getItem("token") ? "Present" : "Missing");
-            console.log("Stored role:", localStorage.getItem("role"));
-            console.log("All localStorage keys:", Object.keys(localStorage));
-            console.log("===================================");
-
-            // Add a small delay before redirect to ensure localStorage is set
+            // IMMEDIATE TEST - Force localStorage sync
+            const immediateTest = localStorage.getItem("token");
+            console.log("IMMEDIATE TEST after setting:", immediateTest);
+            localStorage.getItem("token"); // Force read to ensure write completed
+            
+            // Test after 1 second to check persistence
             setTimeout(() => {
+                console.log("1 SECOND TEST:", localStorage.getItem("token"));
+            }, 1000);
+            
+            // CRITICAL: Verify localStorage was set before redirecting
+            const storedToken = localStorage.getItem("token");
+            const storedRole = localStorage.getItem("role");
+            
+            console.log("=== VERIFICATION BEFORE REDIRECT ===");
+            console.log("Original token:", data.token);
+            console.log("Stored token:", storedToken);
+            console.log("Tokens match:", data.token === storedToken);
+            console.log("Stored role:", storedRole);
+            console.log("localStorage keys:", Object.keys(localStorage));
+            console.log("====================================");
+            
+            // Only redirect if localStorage was successfully set
+            if (storedToken && storedToken === data.token) {
+                // Also try sessionStorage as backup
+                sessionStorage.setItem("token", data.token);
+                sessionStorage.setItem("role", data.role);
+                console.log("Backup stored in sessionStorage");
+                
+                // Use URL parameters as additional backup
+                const tokenParam = encodeURIComponent(data.token);
+                let redirectUrl;
+                
                 if(data.role === "admin") {
-                    console.log("Redirecting admin to dashboard...");
-                    window.location.href = "dashbord.html";
+                    redirectUrl = `dashbord.html?token=${tokenParam}&role=admin`;
+                    console.log("Redirecting admin to dashboard with token backup...");
                 } else {
-                    console.log("Redirecting employee to restaurants...");
-                    window.location.href = "restaurants.html";
+                    redirectUrl = `restaurants.html?token=${tokenParam}&role=${data.role}`;
+                    console.log("Redirecting employee to restaurants with token backup...");
                 }
-            }, 100);
+                
+                // Use a longer delay to ensure localStorage persistence
+                setTimeout(() => {
+                    console.log("=== FINAL CHECK BEFORE REDIRECT ===");
+                    console.log("Token still exists:", !!localStorage.getItem("token"));
+                    console.log("Role still exists:", !!localStorage.getItem("role"));
+                    console.log("SessionStorage token:", !!sessionStorage.getItem("token"));
+                    console.log("Redirect URL:", redirectUrl);
+                    console.log("===================================");
+                    
+                    window.location.href = redirectUrl;
+                }, 500); // Increased delay even more
+            } else {
+                console.error("CRITICAL: localStorage failed to store token!");
+                console.error("Expected:", data.token);
+                console.error("Got:", storedToken);
+                alert("Anmeldung fehlgeschlagen: Speicherfehler. Bitte versuchen Sie es erneut.");
+            }
             
         } else {
-            console.log("Login failed - analyzing response:");
-            console.log("- Expected status='success', got:", data.status);
-            console.log("- Expected success=true, got:", data.success);
-            console.log("- Token present:", !!data.token);
+            console.log("Login failed:");
+            console.log("- Success check:", isSuccess);
+            console.log("- Token exists:", !!data.token);
             
             const errorMessage = data.message || data.error || "Unbekannter Fehler";
             alert("Anmeldung fehlgeschlagen: " + errorMessage);
@@ -80,8 +106,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     })
     .catch((error) => {
         console.error("=== LOGIN ERROR ===");
-        console.error("Error details:", error);
-        console.error("Error message:", error.message);
+        console.error("Error:", error);
         console.error("===================");
         alert("Anmeldung fehlgeschlagen: " + error.message);
     });
