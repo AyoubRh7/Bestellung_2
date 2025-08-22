@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Order Summary</title>
+  <title>Bestellübersicht (Admin)</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   
@@ -185,10 +185,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="dashbord.html">
-      <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+      <i class="fas fa-arrow-left me-2"></i>Zurück zum Dashboard
     </a>
     <span class="navbar-text text-white">
-      <i class="fas fa-chart-bar me-2"></i>Order Summary
+      <i class="fas fa-chart-bar me-2"></i>Bestellübersicht
     </span>
   </div>
 </nav>
@@ -200,9 +200,9 @@
     <!-- Enhanced page header -->
     <div class="summary-header">
       <h1 class="display-4 fw-bold">
-        <i class="fas fa-chart-line me-3"></i>Order Summary
+        <i class="fas fa-chart-line me-3"></i>Bestellübersicht
       </h1>
-      <p class="lead text-muted">View detailed order information with pricing and totals</p>
+      <p class="lead text-muted">Alle Bestellungen mit Preisen und Summen anzeigen</p>
     </div>
 
     <!-- Enhanced filter controls -->
@@ -210,19 +210,19 @@
       <div class="row g-3 align-items-end">
         <div class="col-md-4">
           <label for="summary-date" class="form-label">
-            <i class="fas fa-calendar me-2"></i>Filter by Date (Optional)
+            <i class="fas fa-calendar me-2"></i>Nach Datum filtern (optional)
           </label>
           <input type="date" id="summary-date" class="form-control" />
         </div>
         <div class="col-md-4">
           <button id="load-summary" class="btn load-summary-btn w-100">
-            <i class="fas fa-sync-alt me-2"></i>Load Summary
+            <i class="fas fa-sync-alt me-2"></i>Übersicht laden
           </button>
         </div>
         <div class="col-md-4 text-end">
           <small class="text-muted">
             <i class="fas fa-info-circle me-1"></i>
-            Leave date empty to view all orders
+            Datum leer lassen, um alles zu sehen
           </small>
         </div>
       </div>
@@ -234,14 +234,14 @@
         <table class="table summary-table" id="summary-table">
           <thead>
             <tr>
-              <th><i class="fas fa-calendar me-2"></i>Date</th>
-              <th><i class="fas fa-hashtag me-2"></i>Order ID</th>
+              <th><i class="fas fa-calendar me-2"></i>Datum</th>
+              <th><i class="fas fa-hashtag me-2"></i>Bestell-Nr.</th>
               <th><i class="fas fa-store me-2"></i>Restaurant</th>
-              <th><i class="fas fa-user me-2"></i>User</th>
-              <th><i class="fas fa-utensils me-2"></i>Item</th>
-              <th class="text-end"><i class="fas fa-sort-numeric-up me-2"></i>Qty</th>
-              <th class="text-end"><i class="fas fa-euro-sign me-2"></i>Price</th>
-              <th class="text-end"><i class="fas fa-calculator me-2"></i>Line Total</th>
+              <th><i class="fas fa-user me-2"></i>Benutzer</th>
+              <th><i class="fas fa-utensils me-2"></i>Artikel</th>
+              <th class="text-end"><i class="fas fa-sort-numeric-up me-2"></i>Menge</th>
+              <th class="text-end"><i class="fas fa-euro-sign me-2"></i>Preis</th>
+              <th class="text-end"><i class="fas fa-calculator me-2"></i>Zeilensumme</th>
             </tr>
           </thead>
           <tbody id="summary-body">
@@ -250,7 +250,7 @@
           <tfoot>
             <tr>
               <th colspan="7" class="text-end">
-                <i class="fas fa-coins me-2"></i>Grand Total
+                <i class="fas fa-coins me-2"></i>Gesamtsumme
               </th>
               <th class="text-end" id="grand-total">€0.00</th>
             </tr>

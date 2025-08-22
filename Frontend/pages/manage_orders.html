@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Orders</title>
+  <title>Bestellungen verwalten</title>
   <!-- Bootstrap 5.3.0 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
@@ -108,36 +108,36 @@
 <body>
 
 <div class="container">
-  <h1 class="title text-center">Manage Orders</h1>
+  <h1 class="title text-center">Bestellungen verwalten</h1>
 
   <!-- Date Selector Form -->
   <div class="form-container">
-    <h2 class="text-center">Select Date</h2>
+    <h2 class="text-center">Datum auswählen</h2>
     <form id="order-date-form">
       <div class="mb-3">
-        <label for="order-date" class="form-label">Choose a Date</label>
+        <label for="order-date" class="form-label">Datum wählen</label>
         <input type="date" class="form-control" id="order-date" required>
       </div>
-      <button type="submit" class="btn btn-custom w-100">View Orders</button>
+      <button type="submit" class="btn btn-custom w-100">Bestellungen anzeigen</button>
     </form>
   </div>
 
   <!-- Orders List -->
   <div id="orders-list" class="table-container" style="display: none;">
-    <h2 class="text-center">Orders for <span id="selected-date"></span></h2>
+    <h2 class="text-center">Bestellungen für <span id="selected-date"></span></h2>
     <table class="table table-striped">
       <thead>
       <tr>
         <th>Restaurant</th>
-        <th>User</th>
-        <th>Ordered Item</th>
+        <th>Benutzer</th>
+        <th>Bestellter Artikel</th>
       </tr>
       </thead>
       <tbody id="orders-table-body">
       <!-- Dynamic Content Will Be Injected Here -->
       </tbody>
     </table>
-    <button id="export-btn" class="btn btn-custom w-100 mt-4">Export Orders as CSV</button>
+    <button id="export-btn" class="btn btn-custom w-100 mt-4">Bestellungen als CSV exportieren</button>
   </div>
 </div>
 

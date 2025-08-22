@@ -24,7 +24,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
                 window.location.href = "restaurants.html";
             }
         } else {
-            alert  ("Login failed:  " + data.message);
+            alert  ("Anmeldung fehlgeschlagen: " + data.message);
         }
     })
         .catch((error) => {console.error("Error: ",error);

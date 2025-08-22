@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Menus</title>
+    <title>Menüs verwalten</title>
     <!-- Bootstrap 5.3.0 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
@@ -152,30 +152,30 @@
 <body>
 
 <div class="container">
-    <h1 class="title text-center">Manage Menus</h1>
+    <h1 class="title text-center">Menüs verwalten</h1>
 
     <!-- Select Restaurant and Load Menu -->
     <div class="form-container">
-        <h2 class="text-center">Select a Restaurant</h2>
+        <h2 class="text-center">Restaurant auswählen</h2>
         <div class="mb-3">
             <label for="restaurantSelect" class="form-label">Restaurant</label>
             <select id="restaurantSelect" class="form-control">
-                <option value="" disabled selected>Select a restaurant</option>
+                <option value="" disabled selected>Bitte Restaurant wählen</option>
                 <!-- Restaurant options will be dynamically populated -->
             </select>
         </div>
-        <button id="loadMenuButton" class="btn btn-custom w-100">Load Menu</button>
+        <button id="loadMenuButton" class="btn btn-custom w-100">Menü laden</button>
     </div>
 
     <!-- Menu Items List -->
     <div id="menuListContainer" class="table-container">
-        <h2 class="text-center">Menu Items</h2>
+        <h2 class="text-center">Menüartikel</h2>
         <table class="table table-striped" id="menuTable">
             <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Artikelname</th>
+                <th>Preis</th>
+                <th>Aktionen</th>
             </tr>
             </thead>
             <tbody >
@@ -186,21 +186,21 @@
 
     <!-- Add New Menu Item Form -->
     <div class="form-container">
-        <h2 class="text-center">Add New Menu Item</h2>
+        <h2 class="text-center">Neuen Menüartikel hinzufügen</h2>
         <form id="addMenuForm">
             <div class="mb-3">
-                <label for="item_name" class="form-label">Item Name</label>
-                <input type="text" id="item_name" class="form-control" required placeholder="Item Name">
+                <label for="item_name" class="form-label">Artikelname</label>
+                <input type="text" id="item_name" class="form-control" required placeholder="Artikelname">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" id="description" class="form-control" placeholder="Description">
+                <label for="description" class="form-label">Beschreibung</label>
+                <input type="text" id="description" class="form-control" placeholder="Beschreibung">
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" id="price" class="form-control" required placeholder="Price">
+                <label for="price" class="form-label">Preis</label>
+                <input type="number" id="price" class="form-control" required placeholder="Preis">
             </div>
-            <button type="submit" class="btn btn-custom w-100">Add Item</button>
+            <button type="submit" class="btn btn-custom w-100">Artikel hinzufügen</button>
         </form>
     </div>
 </div>
