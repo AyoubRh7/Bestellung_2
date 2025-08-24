@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,22 +7,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   
-  <!-- Enhanced Admin Summary Styles -->
   <style>
-    /* Page-specific enhancements for admin summary */
+    /* --- All your styles unchanged --- */
     .summary-container {
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       min-height: 100vh;
       padding: 20px 0;
     }
-
-    /* Enhanced page header */
     .summary-header {
       text-align: center;
       margin-bottom: 3rem;
       animation: fadeInUp 0.8s ease;
     }
-
     .summary-header h1 {
       background: linear-gradient(135deg, #344E41, #495057);
       -webkit-background-clip: text;
@@ -31,8 +27,6 @@
       font-weight: 700;
       margin-bottom: 1rem;
     }
-
-    /* Enhanced filter controls */
     .filter-controls {
       background: linear-gradient(145deg, #ffffff, #f8f9fa);
       border-radius: 15px;
@@ -41,8 +35,6 @@
       margin-bottom: 2rem;
       animation: fadeInUp 0.8s ease 0.2s both;
     }
-
-    /* Enhanced table container */
     .table-container {
       background: linear-gradient(145deg, #ffffff, #f8f9fa);
       border-radius: 15px;
@@ -50,19 +42,15 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       animation: fadeInUp 0.8s ease 0.4s both;
     }
-
-    /* Enhanced table styling */
     .summary-table {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-
     .summary-table thead {
       background: linear-gradient(135deg, #344E41 0%, #2C3B32 100%);
       color: white;
     }
-
     .summary-table thead th {
       border: none;
       padding: 1.2rem 1rem;
@@ -71,36 +59,28 @@
       letter-spacing: 0.5px;
       font-size: 0.9rem;
     }
-
     .summary-table tbody tr {
       transition: all 0.3s ease;
     }
-
     .summary-table tbody tr:hover {
       background: linear-gradient(135deg, #f8f9fa, #e9ecef);
       transform: scale(1.01);
     }
-
     .summary-table td {
       padding: 1rem;
       border-color: #e9ecef;
       vertical-align: middle;
     }
-
-    /* Enhanced total row */
     .summary-table tfoot {
       background: linear-gradient(135deg, #28a745, #20c997);
       color: white;
       font-weight: 700;
     }
-
     .summary-table tfoot th {
       border: none;
       padding: 1.5rem 1rem;
       font-size: 1.1rem;
     }
-
-    /* Enhanced form controls */
     .form-control {
       border-radius: 10px;
       border: 2px solid #e9ecef;
@@ -108,20 +88,16 @@
       transition: all 0.3s ease;
       background: linear-gradient(145deg, #ffffff, #f8f9fa);
     }
-
     .form-control:focus {
       border-color: #007bff;
       box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
       transform: translateY(-1px);
     }
-
     .form-label {
       font-weight: 600;
       color: #495057;
       margin-bottom: 0.5rem;
     }
-
-    /* Enhanced load button */
     .load-summary-btn {
       background: linear-gradient(135deg, #007bff, #0056b3) !important;
       border: none !important;
@@ -133,19 +109,15 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
     }
-
     .load-summary-btn:hover {
       background: linear-gradient(135deg, #0056b3, #004085) !important;
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
     }
-
-    /* Loading state for table */
     .table-loading {
       position: relative;
       min-height: 200px;
     }
-
     .table-loading::after {
       content: '';
       position: absolute;
@@ -159,18 +131,14 @@
       animation: spin 1s linear infinite;
       transform: translate(-50%, -50%);
     }
-
     @keyframes spin {
       0% { transform: translate(-50%, -50%) rotate(0deg); }
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
-
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .filter-controls, .table-container {
         padding: 1.5rem;
       }
-      
       .summary-table thead th,
       .summary-table td {
         padding: 0.75rem 0.5rem;
@@ -181,7 +149,6 @@
 </head>
 <body>
 
-<!-- Enhanced Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="dashbord.html">
@@ -193,11 +160,8 @@
   </div>
 </nav>
 
-<!-- Main summary container with gradient background -->
 <div class="summary-container">
   <div class="container">
-    
-    <!-- Enhanced page header -->
     <div class="summary-header">
       <h1 class="display-4 fw-bold">
         <i class="fas fa-chart-line me-3"></i>Bestellübersicht
@@ -205,7 +169,6 @@
       <p class="lead text-muted">Alle Bestellungen mit Preisen und Summen anzeigen</p>
     </div>
 
-    <!-- Enhanced filter controls -->
     <div class="filter-controls">
       <div class="row g-3 align-items-end">
         <div class="col-md-4">
@@ -228,7 +191,6 @@
       </div>
     </div>
 
-    <!-- Enhanced table container -->
     <div class="table-container">
       <div class="table-responsive">
         <table class="table summary-table" id="summary-table">
@@ -244,9 +206,7 @@
               <th class="text-end"><i class="fas fa-calculator me-2"></i>Zeilensumme</th>
             </tr>
           </thead>
-          <tbody id="summary-body">
-            <!-- Data will be populated by JavaScript -->
-          </tbody>
+          <tbody id="summary-body"></tbody>
           <tfoot>
             <tr>
               <th colspan="7" class="text-end">
@@ -261,10 +221,7 @@
   </div>
 </div>
 
-<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="../js/admin_summary.js"></script>
 </body>
 </html>
-
-
